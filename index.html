@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>J&amp;E Consulting and Logistics, Inc.</title>
+<meta name="description" content="J&amp;E Consulting and Logistics, Inc. — advisory and logistics across precious metals, energy, and diamonds." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:        #0d0e11;   /* near-black ground   */
+    --ink-soft:   #15171c;   /* raised panel        */
+    --slate:      #2a2f38;   /* hairlines, borders  */
+    --paper:      #ece8df;   /* warm off-white text */
+    --paper-dim:  #a9a499;   /* muted body text     */
+    --gold:       #c2a063;   /* restrained gold     */
+    --gold-soft:  #8d7647;   /* deeper gold         */
+    --maxw: 1120px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:"Inter", system-ui, sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  ::selection{ background:var(--gold-soft); color:#0d0e11; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+
+  h1,h2,h3{
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-weight:500;
+    line-height:1.08;
+    letter-spacing:.01em;
+  }
+
+  .hairline{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold-soft) 18%, var(--gold-soft) 82%, transparent);
+    border:0;
+    opacity:.5;
+  }
+
+  /* ---------- Top bar ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    backdrop-filter:saturate(120%) blur(8px);
+    background:linear-gradient(to bottom, rgba(13,14,17,.86), rgba(13,14,17,.55));
+    border-bottom:1px solid rgba(42,47,56,.6);
+  }
+  .bar{
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  /* Header/footer brand: integrated stacked lockup */
+  .brand{ display:inline-flex; flex-direction:column; gap:5px; line-height:1; }
+  .brand-mono{
+    font-family:"Cormorant Garamond", serif;
+    font-size:1.5rem; font-weight:600; letter-spacing:.04em; line-height:1;
+  }
+  .brand-mono .amp{ color:var(--gold); }
+  .brand-sub{
+    font-size:.58rem; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--paper-dim); font-weight:400; line-height:1;
+  }
+  nav ul{ list-style:none; display:flex; gap:34px; }
+  nav a{
+    font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--paper-dim); font-weight:400; transition:color .25s ease;
+  }
+  nav a:hover{ color:var(--paper); }
+  .nav-toggle{ display:none; background:none; border:0; color:var(--paper); cursor:pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    /* gradient is the guaranteed base; the photo layers on top */
+    background:
+      radial-gradient(120% 90% at 78% 18%, rgba(194,160,99,.16), transparent 60%),
+      linear-gradient(160deg, #14161b 0%, #0d0e11 58%, #090a0c 100%);
+  }
+  .hero-photo{
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%; object-fit:cover;
+    opacity:.20; filter:grayscale(35%) contrast(1.05);
+    mix-blend-mode:luminosity;
+  }
+  .hero-veil{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(13,14,17,.92) 0%, rgba(13,14,17,.66) 46%, rgba(13,14,17,.30) 100%);
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .hero-inner{ max-width:760px; padding:120px 0 80px; }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    margin:22px 0 26px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold); }
+  .hero p{
+    font-size:1.06rem; color:var(--paper-dim); max-width:50ch;
+    font-weight:300;
+  }
+  .hero-meta{
+    margin-top:54px; display:flex; gap:40px; flex-wrap:wrap;
+    font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--paper-dim);
+  }
+  .hero-meta span{ display:flex; align-items:center; gap:10px; }
+  .dot{ width:5px; height:5px; border-radius:50%; background:var(--gold); display:inline-block; }
+
+  /* ---------- Section frame ---------- */
+  section{ padding:118px 0; }
+  .lead-row{ display:flex; gap:60px; align-items:flex-start; flex-wrap:wrap; }
+  .lead-row .col-label{ flex:0 0 200px; }
+  .lead-row .col-body{ flex:1 1 460px; }
+  .section-title{ font-size:clamp(1.9rem, 3.5vw, 2.9rem); margin:14px 0 0; }
+  .section-body{ color:var(--paper-dim); font-size:1.02rem; max-width:62ch; }
+  .section-body p + p{ margin-top:18px; }
+
+  /* ---------- Sectors ---------- */
+  #sectors{ background:linear-gradient(180deg, #0d0e11 0%, #101217 100%); }
+  .sectors{
+    margin-top:64px;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+    border-top:1px solid var(--slate);
+  }
+  .sector{
+    padding:42px 34px 48px;
+    border-bottom:1px solid var(--slate);
+    border-right:1px solid var(--slate);
+    position:relative;
+    transition:background .3s ease;
+  }
+  .sector:nth-child(3n){ border-right:0; }
+  .sector:hover{ background:rgba(194,160,99,.04); }
+  .sector .idx{
+    font-size:.72rem; letter-spacing:.24em; color:var(--gold-soft); font-weight:500;
+  }
+  .sector h3{ font-size:1.85rem; margin:18px 0 14px; }
+  .sector p{ color:var(--paper-dim); font-size:.95rem; }
+  .sector .rule{ width:34px; height:1px; background:var(--gold); margin:22px 0 0; opacity:.7; }
+
+  /* ---------- Approach (split with image) ---------- */
+  #approach{ position:relative; }
+  .split{ display:grid; grid-template-columns:1.05fr .95fr; gap:0; align-items:stretch; }
+  .split-text{ padding:96px 64px 96px 0; }
+  .split-media{
+    position:relative; min-height:460px; overflow:hidden;
+    border-left:1px solid var(--slate);
+    background:
+      radial-gradient(100% 100% at 20% 0%, rgba(194,160,99,.18), transparent 55%),
+      linear-gradient(150deg, #1a1d23, #0d0e11);
+  }
+  .split-media img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; opacity:.42; filter:grayscale(20%);
+    mix-blend-mode:luminosity;
+  }
+  .values{ margin-top:40px; display:flex; flex-direction:column; gap:0; }
+  .value{
+    display:flex; gap:22px; padding:22px 0; border-top:1px solid var(--slate);
+  }
+  .value:last-child{ border-bottom:1px solid var(--slate); }
+  .value .k{ flex:0 0 130px; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding-top:3px; }
+  .value .v{ color:var(--paper-dim); font-size:.98rem; }
+
+  /* ---------- Mission & Vision ---------- */
+  #purpose{ background:linear-gradient(180deg, #101217 0%, #0d0e11 100%); }
+  .mv-grid{
+    margin-top:60px;
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border-top:1px solid var(--slate);
+  }
+  .mv{
+    padding:44px 48px 50px 0;
+  }
+  .mv:first-child{ border-right:1px solid var(--slate); }
+  .mv:last-child{ padding-left:48px; }
+  .mv-k{
+    font-size:.72rem; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--gold); font-weight:500;
+  }
+  .mv p{
+    margin-top:20px; color:var(--paper-dim);
+    font-family:"Cormorant Garamond", serif; font-weight:400;
+    font-size:1.32rem; line-height:1.5;
+  }
+  .mv p em{ color:var(--paper); font-style:italic; }
+
+  /* ---------- Contact ---------- */
+  #contact{ background:#0a0b0d; }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:60px; }
+  .contact-block .label{
+    font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;
+  }
+  .contact-block address{
+    font-style:normal; font-size:1.12rem; color:var(--paper); line-height:1.75;
+    font-family:"Cormorant Garamond", serif; font-weight:400;
+  }
+  .contact-block address .muted{ color:var(--paper-dim); }
+  .contact-line{ font-size:1rem; color:var(--paper-dim); }
+  .contact-line a:hover{ color:var(--gold); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--slate);
+    padding:40px 0;
+    font-size:.8rem; color:var(--paper-dim);
+  }
+  .foot{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; letter-spacing:.04em; }
+  .foot .brand-mono{ font-size:1.2rem; }
+  .foot .brand-sub{ font-size:.54rem; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .sectors{ grid-template-columns:1fr; }
+    .sector{ border-right:0; }
+    .split{ grid-template-columns:1fr; }
+    .split-text{ padding:72px 0 56px; }
+    .split-media{ min-height:300px; border-left:0; border-top:1px solid var(--slate); }
+    .contact-grid{ grid-template-columns:1fr; gap:40px; }
+    .mv-grid{ grid-template-columns:1fr; }
+    .mv{ padding:38px 0 36px; }
+    .mv:first-child{ border-right:0; border-bottom:1px solid var(--slate); }
+    .mv:last-child{ padding-left:0; }
+    nav ul{
+      position:fixed; inset:68px 0 auto 0;
+      flex-direction:column; gap:0;
+      background:#0d0e11; border-bottom:1px solid var(--slate);
+      max-height:0; overflow:hidden; transition:max-height .3s ease;
+    }
+    nav ul.open{ max-height:320px; }
+    nav li{ border-top:1px solid var(--slate); }
+    nav a{ display:block; padding:18px 28px; }
+    .nav-toggle{ display:block; }
+  }
+  @media (max-width:480px){
+    .brand-sub{ letter-spacing:.2em; font-size:.54rem; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== HEADER ====================== -->
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <span class="brand-mono">J<span class="amp">&amp;</span>E</span>
+      <span class="brand-sub">Consulting &amp; Logistics</span>
+    </a>
+    <nav>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul id="menu">
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================== HERO ====================== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <!-- Free stock photo (Unsplash). Swap the src to change it; gradient remains if it ever fails to load. -->
+  <img class="hero-photo"
+       src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1900&q=80"
+       alt="" aria-hidden="true"
+       onerror="this.style.display='none'" />
+  <div class="hero-veil"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="eyebrow">Consulting &amp; Logistics</p>
+      <h1>Resources, traded and<br><em>mined responsibly.</em></h1>
+      <p>J&amp;E Consulting and Logistics, Inc. operates across gold, oil and gas, and diamonds — in trading and mining — guided by innovation, integrity, and a lasting commitment to the people and places where we work.</p>
+      <div class="hero-meta">
+        <span><i class="dot"></i> Precious Metals</span>
+        <span><i class="dot"></i> Oil &amp; Gas</span>
+        <span><i class="dot"></i> Diamonds</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SECTORS ====================== -->
+<section id="sectors">
+  <div class="wrap">
+    <div class="lead-row reveal">
+      <div class="col-label">
+        <p class="eyebrow">Areas of Activity</p>
+      </div>
+      <div class="col-body">
+        <h2 class="section-title">A focused presence in markets that move the world.</h2>
+        <div class="section-body" style="margin-top:22px;">
+          <p>The firm works across a small set of resource sectors, in both trading and mining. Each is approached with the same standards of integrity and responsible practice.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sectors reveal">
+      <div class="sector">
+        <span class="idx">01 — Precious Metals</span>
+        <h3>Gold</h3>
+        <p>Trading and mining within the gold sector, pursued with rigor and accountability.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="sector">
+        <span class="idx">02 — Energy</span>
+        <h3>Oil &amp; Gas</h3>
+        <p>Activity across the energy sector, guided by integrity and long-term thinking.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="sector">
+        <span class="idx">03 — Stones</span>
+        <h3>Diamonds</h3>
+        <p>A considered presence in the diamond sector, from responsible sourcing through to trade.</p>
+        <div class="rule"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline" />
+
+<!-- ====================== APPROACH ====================== -->
+<section id="approach">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-text reveal">
+        <p class="eyebrow">Our Approach</p>
+        <h2 class="section-title" style="margin-top:16px;">Built on integrity, and on doing right by people and place.</h2>
+        <div class="section-body" style="margin-top:22px;">
+          <p>J&amp;E Consulting and Logistics, Inc. pairs innovation with integrity. We pursue progress in trading and mining while holding to clear ethical standards in everything we undertake.</p>
+          <p>Sustainability and stewardship sit at the center of how the firm works. We aim to operate responsibly, to care for the environments we touch, and to empower the local communities whose futures are tied to ours.</p>
+        </div>
+
+        <div class="values">
+          <div class="value"><div class="k">Innovation &amp; Integrity</div><div class="v">Progress pursued honestly, with sound judgement at every step.</div></div>
+          <div class="value"><div class="k">Ethics &amp; Sustainability</div><div class="v">A commitment to responsible practice and to the environments in which we operate.</div></div>
+          <div class="value"><div class="k">Stewardship &amp; Community</div><div class="v">Care for the resources entrusted to us, and lasting empowerment of the communities around them.</div></div>
+        </div>
+      </div>
+
+      <div class="split-media reveal">
+        <!-- Free stock photo (Unsplash). Gradient shows through if the image is removed or fails. -->
+        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1300&q=80"
+             alt="" aria-hidden="true"
+             onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline" />
+
+<!-- ====================== MISSION & VISION ====================== -->
+<section id="purpose">
+  <div class="wrap">
+    <div class="lead-row reveal">
+      <div class="col-label"><p class="eyebrow">Mission &amp; Vision</p></div>
+      <div class="col-body">
+        <h2 class="section-title">Trust, earned through integrity.</h2>
+        <div class="section-body" style="margin-top:18px;">
+          <p>What guides the firm is simple: do the right thing, and let trust follow from it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mv-grid reveal">
+      <div class="mv">
+        <span class="mv-k">Mission</span>
+        <p>To conduct our work in trading and mining with unwavering integrity, and to <em>earn lasting trust</em> by consistently doing right by our partners, our people, and the communities we serve.</p>
+      </div>
+      <div class="mv">
+        <span class="mv-k">Vision</span>
+        <p>A firm whose name stands for trust — proving that resources can be traded and mined responsibly, where <em>doing the right thing</em> is not a limit on progress but the foundation of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTACT ====================== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="lead-row reveal">
+      <div class="col-label"><p class="eyebrow">Contact</p></div>
+      <div class="col-body">
+        <h2 class="section-title">Enquiries are considered selectively.</h2>
+        <div class="section-body" style="margin-top:18px;">
+          <p>The firm works with a limited number of counterparts and engages on a selective basis. Enquiries are reviewed individually, and not every one will receive a response.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div class="contact-block">
+        <div class="label">Registered Office</div>
+        <address>
+          J&amp;E Consulting and Logistics, Inc.<br>
+          <span class="muted">117 Cole Rd</span><br>
+          <span class="muted">Drummonds, TN 38023</span><br>
+          <span class="muted">United States</span>
+        </address>
+      </div>
+      <div class="contact-block">
+        <div class="label">Correspondence</div>
+        <!-- Email below is live; update if it ever changes -->
+        <p class="contact-line" style="margin-bottom:10px;">
+          <a href="mailto:info@je-consulting-logistics.com">info@je-consulting-logistics.com</a>
+        </p>
+        <p class="contact-line">By appointment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top">
+      <span class="brand-mono">J<span class="amp">&amp;</span>E</span>
+      <span class="brand-sub">Consulting &amp; Logistics</span>
+    </a>
+    <span>© <span id="yr"></span> J&amp;E Consulting and Logistics, Inc. — Drummonds, TN, USA</span>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); })
+  );
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
